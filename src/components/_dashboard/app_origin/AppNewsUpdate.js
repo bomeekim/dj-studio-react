@@ -57,7 +57,7 @@ function NewsItem({ news }) {
   );
 }
 
-export default function AppNewsUpdate() {
+export default function AppSenderTop20() {
   return (
     <Card>
       <CardHeader title="News Update" />

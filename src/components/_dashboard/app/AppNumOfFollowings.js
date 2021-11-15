@@ -9,24 +9,25 @@ import { BaseOptionChart } from '../../charts';
 
 const CHART_DATA = [
   {
-    name: '고유 청취자 수',
-    data: [557, 529, 546, 543, 585, 316, 296, 564, 664, 539, 366, 19, 407, 304, 588, 631, 597, 570, 542, 19, 287, 520, 589, 565, 558, 610, 310, 311]
+    name: '신규 팔로우',
+    data: [18, 16, 16, 27, 17, 10, 9, 17, 21, 17, 9, 3, 19, 16, 19, 33, 23, 15, 20, 7, 10, 23, 25, 26, 28, 24, 15, 20, 15, 30, 12]
   },
   {
-    name: '고유 청취자 랭킹',
-    data: [20, 24, 22, 20, 16, 77, 99, 18, 9, 16, 48, 3678, 42, 90, 10, 6, 9, 12, 16, 3786, 96, 19, 11, 17, 14, 8, 56, 71]
+    name: '언팔로우',
+    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
 ];
 
-export default function AppUniqueListenersDaily() {
+export default function AppNumOfFollowings() {
   const chartOptions = merge(BaseOptionChart(), {
     dataLabels: {
-      enabled: false
+      enabled: true,
+      enabledOnSeries: [0]
     },
     stroke: {
       curve: 'smooth'
     },
-    colors: [ '#fad2e1', '#cdb4db' ],
+    colors: [ '#83c5be', '#bde0fe' ],
     labels: [
       '09/01/2021',
       '09/02/2021',
@@ -92,7 +93,7 @@ export default function AppUniqueListenersDaily() {
 
   return (
     <Card>
-      <CardHeader title="일별 고유 청취자" />
+      <CardHeader title="일별 팬/언팬 트렌드" />
       <Box sx={{ p: 3, pb: 1 }} dir="ltr">
         <ReactApexChart type="area" series={CHART_DATA} options={chartOptions} height={364} />
       </Box>

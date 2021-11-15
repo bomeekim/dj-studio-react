@@ -14,25 +14,29 @@ import { fShortenNumber } from '../../../utils/formatNumber';
 
 const SOCIALS = [
   {
-    name: 'FaceBook',
-    value: faker.datatype.number(),
-    icon: <Icon icon={facebookFill} color="#1877F2" width={32} height={32} />
-  },
-  {
     name: 'Google',
     value: faker.datatype.number(),
-    icon: <Icon icon={googleFill} color="#DF3E30" width={32} height={32} />
+    // icon: <Icon icon={googleFill} color="#DF3E30" width={32} height={32} />
+    emoji: '💕',
   },
   {
     name: 'Linkedin',
     value: faker.datatype.number(),
-    icon: <Icon icon={linkedinFill} color="#006097" width={32} height={32} />
+    // icon: <Icon icon={linkedinFill} color="#006097" width={32} height={32} />
+    emoji: '🙇‍️',
   },
   {
     name: 'Twitter',
     value: faker.datatype.number(),
-    icon: <Icon icon={twitterFill} color="#1C9CEA" width={32} height={32} />
-  }
+    // icon: <Icon icon={twitterFill} color="#1C9CEA" width={32} height={32} />
+    emoji: '🙌',
+  },
+  {
+    name: 'FaceBook',
+    value: faker.datatype.number(),
+    // icon: <Icon icon={facebookFill} color="#1877F2" width={32} height={32} />
+    emoji: '🐰'
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -42,25 +46,27 @@ SiteItem.propTypes = {
 };
 
 function SiteItem({ site }) {
-  const { icon, value, name } = site;
+  const { emoji, value, name } = site;
 
   return (
     <Grid item xs={6}>
       <Paper variant="outlined" sx={{ py: 2.5, textAlign: 'center' }}>
-        <Box sx={{ mb: 0.5 }}>{icon}</Box>
+        <Box sx={{ mb: 0.5 }}>
+          <Typography variant="h2">{emoji}</Typography>
+        </Box>
         <Typography variant="h6">{fShortenNumber(value)}</Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {name}
-        </Typography>
+        {/*<Typography variant="body2" sx={{ color: 'text.secondary' }}>*/}
+        {/*  {name}*/}
+        {/*</Typography>*/}
       </Paper>
     </Grid>
   );
 }
 
-export default function AppTrafficBySite() {
+export default function AppEmojiTop4() {
   return (
     <Card>
-      <CardHeader title="Traffic by Site" />
+      <CardHeader title="보미님을 표현하는 이모지 Top 4" />
       <CardContent>
         <Grid container spacing={2}>
           {SOCIALS.map((site) => (

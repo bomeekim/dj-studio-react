@@ -9,60 +9,84 @@ import { BaseOptionChart } from '../../charts';
 
 const CHART_DATA = [
   {
-    name: '고유 청취자 수',
-    type: 'column',
-    data: [8632, 6728, 5858]
+    name: '2021-08',
+    data: [
+      { x: 1, y: 100 },
+      { x: 2, y: 25 },
+      { x: 3, y: 24 },
+      { x: 4, y: 24 },
+    ]
   },
   {
-    name: '청취자 수 랭킹',
-    type: 'area',
-    data: [16, 20, 30]
-  },
+    name: '2021-09',
+    data: [
+      { x: 1, y: 100 },
+      { x: 2, y: 21 },
+      { x: 3, y: 25 },
+      { x: 4, y: 24 },
+    ]
+  }
 ];
 
-export default function AppUniqueListenersMonthly() {
+export default function appRevisitWeekly() {
   const chartOptions = merge(BaseOptionChart(), {
-    stroke: { width: [0, 4] },
-    plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: ['solid', 'gradient'] },
-    colors: [ '#ffcb69', '#bee1e6' ],
+    stroke: {
+      width: [4, 4],
+      curve: 'smooth'
+    },
+    colors: ['#4c956c', '#ffc9b9'],
     dataLabels: {
       enabled: true,
-      enabledOnSeries: [1]
+    },
+    markers: {
+      size: 0
     },
     xaxis: {
-      categories: ['Jul', 'Aug', 'Sep'],
+      type: 'numeric',
+      min: 1,
+      max: 4,
+      tickAmount: 1,
+      labels: {
+        formatter: function (value) {
+          return `${value}주차`;
+        }
+      }
     },
-    yaxis: [
-      {
-        title: {
-          text: '고유 청취자 수',
-        },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return `${value}%`;
+        }
       },
-      {
-        opposite: true,
-        title: {
-          text: '청취자 수 랭킹'
-        }
-      }
-    ],
-    tooltip: {
-      shared: true,
-      intersect: false,
-      y: {
-        formatter: (y) => {
-          if (typeof y !== 'undefined') {
-            return `${y.toFixed(0)}`;
+      min: 0,
+      max: 100,
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: 40,
+          borderColor: '#00E396',
+          label: {
+            borderColor: '#00E396',
+            style: {
+              color: '#fff',
+              background: '#00E396'
+            },
+            text: 'Goal'
           }
-          return y;
         }
-      }
-    }
+      ]
+    },
+    tooltip: {
+      x: {
+        format: "dd MMM yyyy"
+      },
+    },
   });
 
   return (
     <Card>
-      <CardHeader title="최근 3개월 고유 청취자" subheader="지난 달 대비 22% 감소" />
+      <CardHeader title="주별 청취자 재방문 트렌드" />
       <Box sx={{ p: 3, pb: 1 }} dir="ltr">
         <ReactApexChart type="line" series={CHART_DATA} options={chartOptions} height={364} />
       </Box>

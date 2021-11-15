@@ -37,7 +37,7 @@ const CHART_DATA = [
   { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] }
 ];
 
-export default function AppCurrentSubject() {
+export default function AppComprehensiveAnalysis() {
   const theme = useTheme();
 
   const chartOptions = merge(BaseOptionChart(), {

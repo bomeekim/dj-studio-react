@@ -10,24 +10,32 @@ import { BaseOptionChart } from '../../charts';
 const CHART_DATA = [
   {
     name: '고유 청취자 수',
-    type: 'column',
-    data: [8632, 6728, 5858]
+    data: [2192, 2005, 2195, 2297, 2300]
   },
   {
     name: '청취자 수 랭킹',
-    type: 'area',
-    data: [16, 20, 30]
+    data: [26, 30, 17, 16, 15]
   },
 ];
 
-export default function AppListeners() {
+export default function AppUniqueListenersWeekly() {
   const chartOptions = merge(BaseOptionChart(), {
-    stroke: { width: [0, 4] },
-    plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
-    fill: { type: ['solid', 'gradient'] },
-    xaxis: {
-      categories: ['Jul', 'Aug', 'Sep'],
+    stroke: {
+      width: [4, 4],
+      curve: 'smooth'
     },
+    colors: ['#ccd5ae', '#fec89a'],
+    labels: [
+      '09/01/2021',
+      '09/06/2021',
+      '09/13/2021',
+      '09/20/2021',
+      '09/27/2021',
+    ],
+    dataLabels: {
+      enabled: true,
+    },
+    xaxis: { type: 'datetime' },
     yaxis: [
       {
         title: {
@@ -57,7 +65,7 @@ export default function AppListeners() {
 
   return (
     <Card>
-      <CardHeader title="최근 3개월 고유 청취자" subheader="지난 달 대비 22% 감소" />
+      <CardHeader title="주별 고유 청취자" />
       <Box sx={{ p: 3, pb: 1 }} dir="ltr">
         <ReactApexChart type="line" series={CHART_DATA} options={chartOptions} height={364} />
       </Box>

@@ -20,11 +20,16 @@ const CHART_DATA = [
   },
 ];
 
-export default function AppListeners() {
+export default function AppUniqueListenersMonthly() {
   const chartOptions = merge(BaseOptionChart(), {
     stroke: { width: [0, 4] },
     plotOptions: { bar: { columnWidth: '11%', borderRadius: 4 } },
     fill: { type: ['solid', 'gradient'] },
+    colors: [ '#ffcb69', '#bee1e6' ],
+    dataLabels: {
+      enabled: true,
+      enabledOnSeries: [1]
+    },
     xaxis: {
       categories: ['Jul', 'Aug', 'Sep'],
     },
